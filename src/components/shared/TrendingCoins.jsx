@@ -41,9 +41,9 @@ const Trending = () => {
     fetchTrendingCoins();
   }, []);
   return (
-    <div className="flex flex-col items-center sm:p-[58px] bg-[#1c1c1c] w-full rounded-[20px] gap-[34px]">
+    <div className="flex flex-col items-center 2xl:p-[58px] max-2xl:p-[20px] bg-[#1c1c1c]  rounded-[20px] gap-[34px] ">
       
-      <div className="relative  flex flex-col gap-1 sm:gap-[20px] max-sm:max-w-full sm:max-w-[1300px]">
+      <div className="relative  flex flex-col gap-1 sm:gap-[20px] max-sm:max-w-[300px] 2xl:max-w-[1000px] md:max-w-[600px] sm:max-w-[600px] sm:min-w-[600px]">
         <div className="font-[600] text-[18px] sm:text-[24px] leading-[36px] flex items-center text-[#FFF]">
           Trending Coins
         </div>
@@ -97,13 +97,13 @@ const Trending = () => {
         </div>
         <button
             onClick={handleScrollRight2}
-            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] left-[310px] sm:left-[1280px] shadow-custom cursor-pointer"
+            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] max-sm:left-[280px] 2xl:left-[985px] max-2xl:left-[580px]  shadow-custom cursor-pointer"
           >
             <img src="/src/assets/ArrowRight.svg"  alt="arrow" />
           </button>
         <button
             onClick={handleScrollLeft2}
-            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] left-[15px] sm:left-[-15px] shadow-custom cursor-pointer"
+            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] left-[-15px] xl:left-[-15px]  shadow-custom cursor-pointer"
           >
             <img src="/src/assets/ArrowRight.svg"  alt="arrow" className="rotate-180" />
           </button>

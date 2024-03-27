@@ -4,7 +4,7 @@ import LineChart from "../components/specific/Chart";
 
 const Home = () => {
   return (
-    <div className="flex flex-col mt-10 mx-10">
+    <div className="flex flex-col mt-10 sm:mx-10 mx-4 max-sm:items-center">
       <div className="flex flex-col max-sm:gap-6 sm:flex-row justify-between items-center">
         <div className="flex flex-col gap-2">
           <div className="sm:text-[35px] text-[20px] font-[700]">
@@ -18,7 +18,7 @@ const Home = () => {
           Start Trading
         </button>
       </div>
-      <div className="mt-10 flex flex-row gap-10 flex-wrap">
+      <div className="mt-10 flex flex-row gap-10 flex-wrap max-sm:justify-center">
         {" "}
         <LineChart />
         <BitcoinCard />

@@ -24,11 +24,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <div className="flex flex-col sm:flex-row">
+        <div className="flex flex-col sm:flex-row ">
           <Suspense fallback={<CircularProgress />}>
             <SideBar />
           </Suspense>
-          <div className="">
+          <div className="m-auto flex flex-wrap">
             <Suspense fallback={<CircularProgress />}>
               <Routes>
                 <Route path="/" element={<Home />} />

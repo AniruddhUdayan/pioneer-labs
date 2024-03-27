@@ -145,7 +145,7 @@ const LineChart = () => {
     fetchData();
   }, [windowWidth]);
   return (
-    <div className="bg-[#1c1c1c] p-5 rounded-[20px]  w-[1000px] sm:max-w-[1000px] sm:min-h-[600px]  min-h-[300px] max-sm:w-[280px]">
+    <div className="bg-[#1c1c1c] p-5 rounded-[20px]  w-[1000px] sm:max-w-[70%] sm:min-h-[600px]  min-h-[300px] max-sm:w-[280px]">
       <Line data={chartData} options={lineChartOptions} />
     </div>
   );
