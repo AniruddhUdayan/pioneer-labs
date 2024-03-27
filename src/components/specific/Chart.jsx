@@ -13,7 +13,6 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-// Register necessary components for Chart.js
 ChartJs.register(
   CategoryScale,
   Tooltip,
@@ -24,19 +23,7 @@ ChartJs.register(
   ArcElement,
   Legend,
   Title
-  // Register a custom plugin to draw the background color
-  //   {
-  //     id: 'background-colour',
-  //     beforeDraw: (chart) => {
-  //       const ctx = chart.canvas.getContext('2d');
-  //       ctx.fillStyle = '#f5f5f5'; // Set the background color you want
-  //       ctx.fillRect(0, 0, chart.width, chart.height);
-  //       ctx.restore();
-  //     },
-  //   }
 );
-
-
 
 const LineChart = () => {
   const [chartData, setChartData] = useState({
@@ -49,11 +36,11 @@ const LineChart = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-  
-    window.addEventListener('resize', handleResize);
-  
+
+    window.addEventListener("resize", handleResize);
+
     // Clean up
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const lineChartOptions = {
@@ -77,9 +64,9 @@ const LineChart = () => {
     },
     scales: {
       x: {
-        display: true, // Hide x-axis labels for widths < 600px
+        display: true,
         title: {
-          display: true, // Adjust based on screen width
+          display: true,
           text: "Nation",
           font: { size: 15, weight: "bold" },
           padding: { top: 20 },
@@ -89,59 +76,65 @@ const LineChart = () => {
         },
       },
       y: {
-        display:true, // Hide y-axis labels for widths < 600px
+        display: true,
         title: {
-          display: windowWidth > 600, // Adjust based on screen width
+          display: windowWidth > 600,
           text: "Population",
           font: { size: 15, weight: "bold" },
           padding: { bottom: 20 },
         },
         beginAtZero: false,
         min: windowWidth > 600 ? 250000000 : 300000000,
-        max: windowWidth > 600 ? 350000000 : 350000000, 
+        max: windowWidth > 600 ? 350000000 : 350000000,
         grid: { display: false },
         ticks: {
-          // Customize tick labels to display "M" for millions
-          callback: function(value) {
+          callback: function (value) {
             return windowWidth <= 600 ? `${value / 1000000}M` : value;
-          }
+          },
         },
-       
       },
     },
   };
 
-
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://datausa.io/api/data?drilldowns=Nation&measures=Population");
+      const response = await fetch(
+        "https://datausa.io/api/data?drilldowns=Nation&measures=Population"
+      );
       const data = await response.json();
       const processedData = data.data.map((item) => {
-        // Conditional abbreviation based on screen width
         let nation;
         if (windowWidth < 600) {
-          nation = item.Nation === 'United States' ? 'U.S' : item.Nation === 'United Nation' ? 'U.N' : item.Nation;
+          nation =
+            item.Nation === "United States"
+              ? "U.S"
+              : item.Nation === "United Nation"
+              ? "U.N"
+              : item.Nation;
         } else {
           nation = item.Nation;
         }
         const population = item.Population;
         return { nation, population };
       });
-  
-      const displayedData = windowWidth < 600 ? processedData.slice(0, 3) : processedData;
-      
+
+      const displayedData =
+        windowWidth < 600 ? processedData.slice(0, 3) : processedData;
+
       setChartData({
-        labels: displayedData.map(item => item.nation),
-        datasets: [{
-          label: "Population",
-          data: displayedData.map(item => item.population),
-          fill: true,
-          backgroundColor: "rgba(107, 33, 168, 0.2)",
-          borderColor: "#a855f7",
-        }],
+        labels: displayedData.map((item) => item.nation),
+        datasets: [
+          {
+            label: "Population",
+            data: displayedData.map((item) => item.population),
+            fill: true,
+            backgroundColor: "rgba(107, 33, 168, 0.2)",
+            borderColor: "#a855f7",
+          },
+        ],
       });
     };
-  
+
     fetchData();
   }, [windowWidth]);
   return (

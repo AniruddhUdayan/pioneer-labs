@@ -44,7 +44,7 @@ export default function SideBar() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-row px-4">
             {" "}
-            <img src="/src/assets/logo.png" width={50} />
+            <img src="/assets/logo.png" width={50} />
             <div className="flex justify-center items-center">
               <h1 className="text-white text-xl font-bold">Procial Inc</h1>
             </div>
@@ -80,7 +80,7 @@ export default function SideBar() {
           </List>
         </div>
         <div className="p-2 bg-[#2b2b2b] flex flex-row justify-evenly items-center">
-            <img src="/src/assets/user.png" width={50} className="rounded-[50%] border-[#1c1c1c] border-[3px]"/>
+            <img src="/assets/user.png" width={50} className="rounded-[50%] border-[#1c1c1c] border-[3px]"/>
             <div className="flex flex-col">
                 <div>User Name</div>
                 <div className="text-[12px]">username@mail.com</div>

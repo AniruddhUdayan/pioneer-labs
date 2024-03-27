@@ -1,14 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-
 const Trending = () => {
   const [trendingCoins, setTrendingCoins] = useState([]);
 
   const scrollContainerRef2 = useRef(null);
 
-
-
-  // Handlers for the second scrolling container
   const handleScrollLeft2 = () => {
     if (scrollContainerRef2.current) {
       scrollContainerRef2.current.scrollBy({ left: -456, behavior: "smooth" });
@@ -19,7 +15,6 @@ const Trending = () => {
       scrollContainerRef2.current.scrollBy({ left: 456, behavior: "smooth" });
     }
   };
-
 
   useEffect(() => {
     const fetchTrendingCoins = async () => {
@@ -42,12 +37,14 @@ const Trending = () => {
   }, []);
   return (
     <div className="flex flex-col items-center 2xl:p-[58px] max-2xl:p-[20px] bg-[#1c1c1c]  rounded-[20px] gap-[34px] ">
-      
       <div className="relative  flex flex-col gap-1 sm:gap-[20px] max-sm:max-w-[300px] 2xl:max-w-[1000px] md:max-w-[600px] sm:max-w-[600px] sm:min-w-[600px]">
         <div className="font-[600] text-[18px] sm:text-[24px] leading-[36px] flex items-center text-[#FFF]">
           Trending Coins
         </div>
-        <div className=" flex flex-row gap-[10px] overflow-x-scroll overflow-y-hidden scrollbar-hide"  ref={scrollContainerRef2}>
+        <div
+          className=" flex flex-row gap-[10px] overflow-x-scroll overflow-y-hidden scrollbar-hide"
+          ref={scrollContainerRef2}
+        >
           {trendingCoins.map((coin, index) => (
             <div
               key={index}
@@ -56,7 +53,7 @@ const Trending = () => {
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-row gap-3">
-                  <img
+                    <img
                       src={coin.item.thumb}
                       alt={coin.item.name}
                       width={26}
@@ -88,25 +85,36 @@ const Trending = () => {
                   </div>
                 </div>
                 <div className="flex flex-col ">
-                    <div className="font-[500] text-[12.62px] sm:text-[20px] leading-[24px] flex items-center mb-[2px]">{coin.item.data.price}</div>
-                    <img src={coin?.item?.data?.sparkline} alt="graph" width={200} height={60} />
+                  <div className="font-[500] text-[12.62px] sm:text-[20px] leading-[24px] flex items-center mb-[2px]">
+                    {coin.item.data.price}
+                  </div>
+                  <img
+                    src={coin?.item?.data?.sparkline}
+                    alt="graph"
+                    width={200}
+                    height={60}
+                  />
                 </div>
               </div>
             </div>
           ))}
         </div>
         <button
-            onClick={handleScrollRight2}
-            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] max-sm:left-[280px] 2xl:left-[985px] max-2xl:left-[580px]  shadow-custom cursor-pointer"
-          >
-            <img src="/src/assets/ArrowRight.svg"  alt="arrow" />
-          </button>
+          onClick={handleScrollRight2}
+          className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] max-sm:left-[280px] 2xl:left-[985px] max-2xl:left-[580px]  shadow-custom cursor-pointer"
+        >
+          <img src="/assets/ArrowRight.svg" alt="arrow" />
+        </button>
         <button
-            onClick={handleScrollLeft2}
-            className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] left-[-15px] xl:left-[-15px]  shadow-custom cursor-pointer"
-          >
-            <img src="/src/assets/ArrowRight.svg"  alt="arrow" className="rotate-180" />
-          </button>
+          onClick={handleScrollLeft2}
+          className="w-[34px] h-[34px] bg-[#FFFFFF] rounded-[50%] flex justify-center items-center absolute bottom-[60px] sm:bottom-[70px] left-[-15px] xl:left-[-15px]  shadow-custom cursor-pointer"
+        >
+          <img
+            src="/assets/ArrowRight.svg"
+            alt="arrow"
+            className="rotate-180"
+          />
+        </button>
       </div>
     </div>
   );
